@@ -8,17 +8,26 @@ namespace VirtualPaws.WebApi.Controllers
     [ApiController]
     public class PetController : ControllerBase
     {
-        private readonly IPetRepository repository;
+        private readonly IPetRepository repo;
 
         public PetController(IPetRepository repository)
         {
-            repository = repository;
+            repo = repository;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(repository.GetAll());
+            var list = repo.GetAll();
+            return Ok(list);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var item = repo.GetById(id);
+            if(item is null) return NotFound();
+            return Ok(item);
         }
     }
 }

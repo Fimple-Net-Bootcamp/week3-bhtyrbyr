@@ -16,18 +16,18 @@ namespace VirtualPaws.Domain.Entities
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
-        public int OwnerId { get; set; }
+        public int? OwnerId { get; set; }
 
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
         [ForeignKey("OwnerId")]
-        public User Owner{ get; set; }
+        public User? Owner{ get; set; }
 
         /// <summary>
         /// Indicates when the pet was owned.
         /// </summary>
-        public DateTime OwnershipDate { get; set; }
+        public DateTime? OwnershipDate { get; set; }
 
         /// <summary>
         /// Identifies activities that the pet can do.

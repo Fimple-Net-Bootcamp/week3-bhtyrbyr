@@ -5,9 +5,9 @@ namespace VirtualPaws.Persistence.Context
 {
     public class AppDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=qawsedb12;");
+            
         }
 
         public DbSet<User> Users { get; set; }

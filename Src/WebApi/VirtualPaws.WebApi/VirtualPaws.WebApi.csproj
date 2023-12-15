@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\VirtualPaws.Application\VirtualPaws.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\VirtualPaws.Persistence\VirtualPaws.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

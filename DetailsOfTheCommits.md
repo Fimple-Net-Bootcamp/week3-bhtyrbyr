@@ -23,3 +23,4 @@
 ### C5 - WebApi layer created.
 * Db was created with Migration.
 * Added pet controller. 
+* Sample data has been added to the DB.
