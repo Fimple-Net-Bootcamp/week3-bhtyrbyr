@@ -12,3 +12,4 @@
 ### C3 - Name updates have been made.
 * Interfaces have been edited to be async. 
 * Interfaces are connected to an IGenericRepository interface.
+* Name updates were made in the domain layer.

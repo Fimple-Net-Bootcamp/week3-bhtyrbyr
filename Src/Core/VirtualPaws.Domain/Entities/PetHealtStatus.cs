@@ -10,12 +10,12 @@ namespace VirtualPaws.Domain.Entities
     /// <summary>
     /// This entity represents the state of health of pets.
     /// </summary>
-    public class PawHealtStatus : BaseEntity
+    public class PetHealtStatus : BaseEntity
     {
         /// <summary>
         /// Identifies which pet it is.
         /// </summary>
-        public Pet Paw { get; set; }
+        public Pet Pet { get; set; }
 
         /// <summary>
         /// Shows health status as a point system.

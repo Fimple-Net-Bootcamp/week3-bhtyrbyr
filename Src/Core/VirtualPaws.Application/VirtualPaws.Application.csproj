@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="MapProfiles\" />
+    <Folder Include="Parameters\" />
+    <Folder Include="Wrappers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualPaws.Domain\VirtualPaws.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
