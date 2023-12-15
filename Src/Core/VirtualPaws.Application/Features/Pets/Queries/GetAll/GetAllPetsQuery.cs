@@ -3,7 +3,7 @@ using MediatR;
 using VirtualPaws.Application.DTO_s.PetDTO_s;
 using VirtualPaws.Application.Interfaces.Repository;
 
-namespace VirtualPaws.Application.Features.Queries.Pets.GetAll
+namespace VirtualPaws.Application.Features.Pets.Queries.GetAll
 {
     public class GetAllPetsQuery : IRequest<List<PetSimplifiedViewDTO>>
     {

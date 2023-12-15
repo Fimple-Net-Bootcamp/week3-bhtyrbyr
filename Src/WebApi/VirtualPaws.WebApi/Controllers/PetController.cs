@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using VirtualPaws.Application.Features.Queries.Pets.GetAll;
-using VirtualPaws.Application.Interfaces.Repository;
+using VirtualPaws.Application.Features.Pets.Queries.GetAll;
+using VirtualPaws.Application.Features.Pets.Queries.GetById;
 
 namespace VirtualPaws.WebApi.Controllers
 {
@@ -20,8 +19,16 @@ namespace VirtualPaws.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var list = new GetAllPetsQuery();
-            return Ok(await _mediator.Send(list));
+            var query = new GetAllPetsQuery();
+            return Ok(await _mediator.Send(query));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var query = new GetByIdPetQuery();
+            query.Id = id;
+            return Ok(await _mediator.Send(query));
         }
     }
 }

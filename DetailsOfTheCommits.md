@@ -1,31 +1,36 @@
-### C1 - Domain layer created.
-* Domain layer was created. 
-* BaseEntity class was defined for properties common to entities.
-* Entities to be used in the project were identified and defined.
+### C1 - Etki alaný katmaný oluþturuldu.
+* Etki alaný katmaný oluþturuldu. 
+* Varlýklarda ortak olan özellikler için BaseEntity sýnýfý tanýmlandý.
+* Projede kullanýlacak entityler belirlendi ve tanýmlandý.
 
-### C2 - Application layer created.
-* DTOs were created.
-* Interfaces defined.
-* Necessary folders were created.
-* Name updates were made in the domain layer.
+### C2 - Uygulama katmaný oluþturuldu.
+* DTO'lar oluþturuldu.
+* Arayüzler tanýmlandý.
+* Gerekli klasörler oluþturuldu.
+* Etki alaný katmanýnda isim güncellemeleri yapýldý.
 
-### C3 - Name updates have been made.
-* Interfaces have been edited to be async. 
-* Interfaces are connected to an IGenericRepository interface.
-* Name updates were made in the domain layer.
+### C3 - Ýsim güncellemeleri yapýldý.
+* Arayüzler async olacak þekilde düzenlendi. 
+* Arayüzler bir IGenericRepository arayüzüne baðlandý.
+* Etki alaný katmanýnda isim güncellemeleri yapýldý.
 
-### C4 - Persistence layer created.
-* The definition of repository interfaces was done in this layer.
-* The namespace layer in the IActivityRepository interface in the Application layer has been fixed.
-* DbContext class was created. DbSet's were defined over the entities defined in the Domain layer.
-* Removed unnecessary namespace usage in the whole project.
+### C4 - Persistence katmaný oluþturuldu.
+* Depo arayüzlerinin tanýmý bu katmanda yapýldý.
+* Application katmanýndaki IActivityRepository arayüzündeki namespace katmaný düzeltildi.
+* DbContext sýnýfý oluþturuldu. Domain katmanýnda tanýmlanan entityler üzerinden DbSet'ler tanýmlandý.
+* Tüm projedeki gereksiz namespace kullanýmý kaldýrýldý.
 
-### C5 - WebApi layer created.
-* Db was created with migration.
-* Added pet controller. 
-* Sample data has been added to the DB.
+### C5 - WebApi katmaný oluþturuldu.
+* Migration ile Db oluþturuldu.
+* Pet controller eklendi. 
+* DB'ye örnek veri eklendi.
 
-### C6 - DB updated.
-* Db was updated with migration.
-* MediatR was included in the project. 
-* Direct access to assets from controllers was removed with mediatr.
+### C6 - DB güncellendi.
+* Db migration ile güncellendi.
+* MediatR projeye dahil edildi. 
+* Kontrolcülerden varlýklara doðrudan eriþim mediatr ile kaldýrýldý.
+
+### C7 - Application katmanýnda düzenleme yapýldý.
+* Features kalsör düzeni deðiþtirildi.
+* Mapping profile kalsörü kaldýrýldý. Yerine tüm entity'lerin kendisine ait mapping profilleri oluþturuldu.
+* Mediatr sürümleri 11.x'den 9.0'a çekildi.

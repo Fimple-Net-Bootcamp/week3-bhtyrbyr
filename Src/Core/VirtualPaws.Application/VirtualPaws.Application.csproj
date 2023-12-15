@@ -10,7 +10,6 @@
     <Folder Include="Features\Commands\Pets\Create\" />
     <Folder Include="Features\Commands\Pets\Delete\" />
     <Folder Include="Features\Commands\Pets\Update\" />
-    <Folder Include="Features\Queries\Pets\GetById\" />
     <Folder Include="Parameters\" />
     <Folder Include="Wrappers\" />
   </ItemGroup>
