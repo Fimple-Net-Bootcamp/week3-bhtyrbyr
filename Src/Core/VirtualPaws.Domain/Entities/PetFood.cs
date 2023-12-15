@@ -10,7 +10,7 @@ namespace VirtualPaws.Domain.Entities
     /// <summary>
     /// This entity defines the food that pets can be fed.
     /// </summary>
-    public class PawFood : BaseEntity
+    public class PetFood : BaseEntity
     {
         /// <summary>
         /// Specifies the name of the food.
