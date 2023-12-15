@@ -27,3 +27,5 @@
 
 ### C6 - DB updated.
 * Db was updated with migration.
+* MediatR was included in the project. 
+* Direct access to assets from controllers was removed with mediatr.

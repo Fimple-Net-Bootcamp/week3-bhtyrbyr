@@ -41,7 +41,7 @@ namespace VirtualPaws.Domain.Entities
         /// - 1 means puppy.
         /// - 10 means legendary.
         /// </summary>
-        public byte PawType { get; set; }
+        public byte PetType { get; set; }
 
         /// <summary>
         ///  Indicates how hungry the pet is.

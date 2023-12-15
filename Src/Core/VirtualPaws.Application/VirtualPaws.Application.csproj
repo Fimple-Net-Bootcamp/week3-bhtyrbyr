@@ -7,13 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MapProfiles\" />
+    <Folder Include="Features\Commands\Pets\Create\" />
+    <Folder Include="Features\Commands\Pets\Delete\" />
+    <Folder Include="Features\Commands\Pets\Update\" />
+    <Folder Include="Features\Queries\Pets\GetById\" />
     <Folder Include="Parameters\" />
     <Folder Include="Wrappers\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

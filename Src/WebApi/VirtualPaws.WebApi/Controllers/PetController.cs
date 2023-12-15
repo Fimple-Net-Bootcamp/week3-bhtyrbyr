@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VirtualPaws.Application.Features.Queries.Pets.GetAll;
 using VirtualPaws.Application.Interfaces.Repository;
 
 namespace VirtualPaws.WebApi.Controllers
@@ -8,18 +10,18 @@ namespace VirtualPaws.WebApi.Controllers
     [ApiController]
     public class PetController : ControllerBase
     {
-        private readonly IPetRepository repo;
+        private readonly IMediator _mediator;
 
-        public PetController(IPetRepository repository)
+        public PetController(IMediator mediator)
         {
-            repo = repository;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var list = repo.GetAll();
-            return Ok(list);
+            var list = new GetAllPetsQuery();
+            return Ok(await _mediator.Send(list));
         }
     }
 }
