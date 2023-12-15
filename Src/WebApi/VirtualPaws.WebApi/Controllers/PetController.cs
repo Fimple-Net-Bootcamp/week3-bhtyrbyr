@@ -18,7 +18,7 @@ namespace VirtualPaws.WebApi.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-
+            return Ok(repository.GetAll());
         }
     }
 }
