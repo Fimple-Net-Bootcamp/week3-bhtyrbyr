@@ -13,14 +13,26 @@ namespace VirtualPaws.Application.Features.Pets.Queries.GetEntity
     {
         public class GetPetEntityQueryHandler : IRequestHandler<GetPetEntityQuery, List<Pet>>
         {
-            private readonly IPetRepository repository;
-            public GetPetEntityQueryHandler(IPetRepository petRepository)
+            private readonly IPetRepository _petRepository;
+            private readonly IUserRepository _usertRepository;
+           // private readonly IActivityRepository _activityRepository;
+            public GetPetEntityQueryHandler(IPetRepository petRepository, IUserRepository userRepository, IActivityRepository activityRepository)
             {
-                repository = petRepository;               
+                _petRepository = petRepository;
+                _usertRepository = userRepository;
+                //_activityRepository = activityRepository;
             }
             public async Task<List<Pet>> Handle(GetPetEntityQuery request, CancellationToken cancellationToken)
             {
-                return repository.GetAll();
+                var petList = _petRepository.GetAll();
+                var userList = _usertRepository.GetAll();
+                //var activityList = _activityRepository.GetAll();
+
+                /*petList.ForEach(pet =>
+                {
+                    pet.Owner = userList.FirstOrDefault(user => user.Id == pet.Id);
+                });*/
+                return petList;
             }
         }
     }

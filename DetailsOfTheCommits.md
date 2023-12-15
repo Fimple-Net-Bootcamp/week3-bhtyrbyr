@@ -35,6 +35,8 @@
 * Mapping profile kalsörü kaldýrýldý. Yerine tüm entity'lerin kendisine ait mapping profilleri oluþturuldu.
 * Mediatr sürümleri 11.x'den 9.0'a çekildi.
 
-## C8 - Evcil hayvan ekleme özelliði eklendi.
+### C8 - Evcil hayvan ekleme özelliði eklendi.
 * Evcil hayvan ekleme özelliði eklendi. 
 * Veriler endpoint'de DTO ile alýnýp CommandHandler tarafýnda eksik bilgiler tamamlanarak veri tabanýna kaydedilmesi saðlandý.
+
+### C9 - Evcil hayvan sorgulamarý düzenlendi.

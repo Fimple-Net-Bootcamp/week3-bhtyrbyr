@@ -6,7 +6,7 @@ namespace VirtualPaws.Application.DTO_s.PetDTO_s
     {
         public string Name { get; set; }
         public string OwnerName { get; set; }
-        public string OwnnershipDate { get; set; }
+        public string OwnershipDate { get; set; }
         public string PetType { get; set; }
         public byte HungerStatus { get; set; }
         public List<ActivityViewDTO> Activities { get; set; }
