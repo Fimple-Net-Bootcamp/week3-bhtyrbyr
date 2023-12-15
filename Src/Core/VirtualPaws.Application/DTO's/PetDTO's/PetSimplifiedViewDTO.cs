@@ -2,5 +2,10 @@
 {
     public class PetSimplifiedViewDTO
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte PetType { get; set; }
+        public bool IsAlive { get; set; }
+        public bool IsOwned { get; set; }
     }
 }

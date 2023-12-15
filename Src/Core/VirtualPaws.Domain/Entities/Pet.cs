@@ -53,14 +53,9 @@ namespace VirtualPaws.Domain.Entities
         public byte HungerStatus { get; set; }
 
         /// <summary>
-        /// Indicates the pet's birthday.
-        /// </summary>
-        public DateTime BirthDay { get; set; }
-
-        /// <summary>
         /// Indicates whether the pet is adopted or not.
         /// </summary>
-        public bool IsAdopted { get; set; }
+        public bool IsOwned { get; set; }
 
         /// <summary>
         /// Indicates whether the pet is alive or not.

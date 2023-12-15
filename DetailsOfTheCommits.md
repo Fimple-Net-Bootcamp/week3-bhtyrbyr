@@ -21,6 +21,9 @@
 * Removed unnecessary namespace usage in the whole project.
 
 ### C5 - WebApi layer created.
-* Db was created with Migration.
+* Db was created with migration.
 * Added pet controller. 
 * Sample data has been added to the DB.
+
+### C6 - DB updated.
+* Db was updated with migration.

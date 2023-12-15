@@ -21,13 +21,5 @@ namespace VirtualPaws.WebApi.Controllers
             var list = repo.GetAll();
             return Ok(list);
         }
-
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            var item = repo.GetById(id);
-            if(item is null) return NotFound();
-            return Ok(item);
-        }
     }
 }
