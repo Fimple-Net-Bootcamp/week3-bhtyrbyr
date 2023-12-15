@@ -12,7 +12,7 @@ namespace VirtualPaws.Persistence
         {
             services.AddDbContext<AppDbContext>(opt => 
                                                 opt.UseNpgsql(
-                                                    connectionString: "Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=qawsedb12;"
+                                                    connectionString: "Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=postgres;"
                                                     )
                                                 );
             services.AddTransient<IPetRepository, PetRepository>();
