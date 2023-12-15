@@ -19,3 +19,7 @@
 * The namespace layer in the IActivityRepository interface in the Application layer has been fixed.
 * DbContext class was created. DbSet's were defined over the entities defined in the Domain layer.
 * Removed unnecessary namespace usage in the whole project.
+
+### C5 - WebApi layer created.
+* Db was created with Migration.
+* Added pet controller. 

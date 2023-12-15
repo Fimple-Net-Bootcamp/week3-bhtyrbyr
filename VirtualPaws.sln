@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPaws.Persistence", "Src\Infrastructure\VirtualPaws.Persistence\VirtualPaws.Persistence.csproj", "{AEFCFC00-686A-4754-95A7-E804A8D596E1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{C67452DC-1B0E-4FC1-B123-8A5F90BEADEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPaws.WebApi", "Src\WebApi\VirtualPaws.WebApi\VirtualPaws.WebApi.csproj", "{B8A9CCF0-DBB0-431D-94A7-18D14E6EB5EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,10 @@ Global
 		{AEFCFC00-686A-4754-95A7-E804A8D596E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEFCFC00-686A-4754-95A7-E804A8D596E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEFCFC00-686A-4754-95A7-E804A8D596E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A9CCF0-DBB0-431D-94A7-18D14E6EB5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A9CCF0-DBB0-431D-94A7-18D14E6EB5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A9CCF0-DBB0-431D-94A7-18D14E6EB5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A9CCF0-DBB0-431D-94A7-18D14E6EB5EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,8 @@ Global
 		{CB9CD3B3-AB20-46C3-A7F2-4D746760AA8A} = {C7B17778-41D5-47B6-9A1C-E519C546FADE}
 		{D030542D-BCFC-4A9B-A32C-5E877B36A249} = {AE470A62-60DD-4392-9A0C-041B5A3C1D1C}
 		{AEFCFC00-686A-4754-95A7-E804A8D596E1} = {D030542D-BCFC-4A9B-A32C-5E877B36A249}
+		{C67452DC-1B0E-4FC1-B123-8A5F90BEADEC} = {AE470A62-60DD-4392-9A0C-041B5A3C1D1C}
+		{B8A9CCF0-DBB0-431D-94A7-18D14E6EB5EC} = {C67452DC-1B0E-4FC1-B123-8A5F90BEADEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6E0B2A7-9009-4EDF-BB41-9C019E047EEE}
