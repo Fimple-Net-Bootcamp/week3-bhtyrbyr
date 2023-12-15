@@ -13,3 +13,9 @@
 * Interfaces have been edited to be async. 
 * Interfaces are connected to an IGenericRepository interface.
 * Name updates were made in the domain layer.
+
+### C4 - Persistence layer created.
+* The definition of repository interfaces was done in this layer.
+* The namespace layer in the IActivityRepository interface in the Application layer has been fixed.
+* DbContext class was created. DbSet's were defined over the entities defined in the Domain layer.
+* Removed unnecessary namespace usage in the whole project.

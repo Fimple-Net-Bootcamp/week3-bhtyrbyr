@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using VirtualPaws.Domain.Common;
 
 namespace VirtualPaws.Domain.Entities
@@ -20,6 +16,12 @@ namespace VirtualPaws.Domain.Entities
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
+        public int OwnerId { get; set; }
+
+        /// <summary>
+        /// Indicates the user who adopted the pet.
+        /// </summary>
+        [ForeignKey("OwnerId")]
         public User Owner{ get; set; }
 
         /// <summary>
@@ -30,7 +32,7 @@ namespace VirtualPaws.Domain.Entities
         /// <summary>
         /// Identifies activities that the pet can do.
         /// </summary>
-        public List<Activitiy> ActivitiesCanBe { get; set; }
+        public List<Activity> ActivitiesCanBe { get; set; }
 
         /// <summary>
         /// Specifies the type of the pet.

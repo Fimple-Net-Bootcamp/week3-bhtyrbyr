@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VirtualPaws.Domain.Common;
+﻿using VirtualPaws.Domain.Common;
 
 namespace VirtualPaws.Domain.Entities
 {
     /// <summary>
     /// This entity was created to keep track of activities that pets can do.
     /// </summary>
-    public class Activitiy : BaseEntity
+    public class Activity : BaseEntity
     {
         /// <summary>
         /// Specifies the name of the activity.
