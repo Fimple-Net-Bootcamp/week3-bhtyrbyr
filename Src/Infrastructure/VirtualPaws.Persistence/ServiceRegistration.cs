@@ -16,6 +16,8 @@ namespace VirtualPaws.Persistence
                                                     )
                                                 );
             services.AddTransient<IPetRepository, PetRepository>();
+            services.AddTransient<IActivityRepository, ActivityRepository>();
+            services.AddTransient<IPetHealtStatusRepository, PetHealtStatusRepository>();
         }
     }
 }
