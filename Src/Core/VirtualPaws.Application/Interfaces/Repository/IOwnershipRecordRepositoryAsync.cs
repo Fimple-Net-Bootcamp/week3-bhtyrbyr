@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VirtualPaws.Application.Interfaces.Repository
 {
-    public interface IHealtStatusRepository
+    public interface IOwnershipRecordRepositoryAsync
     {
     }
 }
