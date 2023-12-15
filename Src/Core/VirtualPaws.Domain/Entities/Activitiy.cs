@@ -10,7 +10,7 @@ namespace VirtualPaws.Domain.Entities
     /// <summary>
     /// This entity was created to keep track of activities that pets can do.
     /// </summary>
-    public class Activitie : BaseEntity
+    public class Activitiy : BaseEntity
     {
         /// <summary>
         /// Specifies the name of the activity.

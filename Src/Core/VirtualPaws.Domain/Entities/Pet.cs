@@ -28,6 +28,11 @@ namespace VirtualPaws.Domain.Entities
         public DateTime OwnershipDate { get; set; }
 
         /// <summary>
+        /// Identifies activities that the pet can do.
+        /// </summary>
+        public List<Activitiy> ActivitiesCanBe { get; set; }
+
+        /// <summary>
         /// Specifies the type of the pet.
         /// - Can take a value between 1 and 10.
         /// - Users can adopt a pet based on this type value and their own X score.
