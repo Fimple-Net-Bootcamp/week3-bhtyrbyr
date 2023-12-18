@@ -40,3 +40,10 @@
 * Veriler endpoint'de DTO ile alýnýp CommandHandler tarafýnda eksik bilgiler tamamlanarak veri tabanýna kaydedilmesi saðlandý.
 
 ### C9 - Evcil hayvan sorgulamarý düzenlendi.
+
+
+### C10 - Entity'lerde ve DB'de düzenlemeler yapýldý.
+* Entity'ler düzenlendi.
+* DTO'lar düzenlenmek üzere kaldýrýldý.
+* ServiceRegistration'lar IServicesCollection döndürecek þekilde düzenlendi.
+* Kontrolcüler düzenlenmek üzere kaldýrýlý.
