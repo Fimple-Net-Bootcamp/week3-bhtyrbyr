@@ -1,4 +1,5 @@
-﻿using VirtualPaws.Domain.Common;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using VirtualPaws.Domain.Common;
 
 namespace VirtualPaws.Domain.Entities
 {
@@ -7,9 +8,15 @@ namespace VirtualPaws.Domain.Entities
     /// </summary>
     public class PetHealtStatus : BaseEntity
     {
+
+        /// <summary>
+        /// Indicates the which pet has a health record
+        /// </summary>
+        public UInt16 PetId { get; set; }
         /// <summary>
         /// Identifies which pet it is.
         /// </summary>
+        [ForeignKey("PetId")]
         public Pet Pet { get; set; }
 
         /// <summary>

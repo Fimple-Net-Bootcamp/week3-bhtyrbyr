@@ -19,27 +19,19 @@ namespace VirtualPaws.Domain.Entities
         public string Surname { get; set; }
 
         /// <summary>
+        /// Indicates the user name.
+        /// </summary>
+        public string Username { get; set; }
+
+        /// <summary>
         /// Specifies the user's password.
         /// </summary>
         public string Password { get; set; }
 
         /// <summary>
-        /// Specifies the user's birthday.
-        /// </summary>
-        public DateTime BirthDay { get; set; }
-
-        /// <summary>
-        /// Indicates the user's ability to adopt a pet.  
-        /// - The starting score is 1. 
-        /// - The maximum score is 100. 
-        /// - Determines how many pets the user can have at the same time (1 more than the score divided by 10).
-        /// </summary>
-        public byte PetOwnershipAbility { get; set; }
-
-        /// <summary>
         /// Indicates the pets the user owns.
         /// </summary>
-        public List<Pet> Paws { get; set; }
+        public List<Pet> Pets { get; set; }
 
         /// <summary>
         /// Indicates whether the user account is active or not.

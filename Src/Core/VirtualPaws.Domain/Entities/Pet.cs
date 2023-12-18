@@ -16,23 +16,13 @@ namespace VirtualPaws.Domain.Entities
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
-        public int? OwnerId { get; set; }
+        public UInt16 OwnerId { get; set; }
 
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
         [ForeignKey("OwnerId")]
-        public User? Owner{ get; set; }
-
-        /// <summary>
-        /// Indicates when the pet was owned.
-        /// </summary>
-        public DateTime? OwnershipDate { get; set; }
-
-        /// <summary>
-        /// Identifies activities that the pet can do.
-        /// </summary>
-        public List<Activity> ActivitiesCanBe { get; set; }
+        public User Owner{ get; set; }
 
         /// <summary>
         /// Specifies the type of the pet.
@@ -41,7 +31,22 @@ namespace VirtualPaws.Domain.Entities
         /// - 1 means puppy.
         /// - 10 means legendary.
         /// </summary>
-        public byte PetType { get; set; }
+        public byte Type { get; set; }
+
+        /// <summary>
+        /// Indicates the level of the pet.
+        /// </summary>
+        public byte Level { get; set; }
+
+        /// <summary>
+        /// Indicates the experience points of the current level of the pet.
+        /// </summary>
+        public byte XP { get; set; }
+
+        /// <summary>
+        /// Identifies activities that the pet can do.
+        /// </summary>
+        public List<Activity> Activities { get; set; }
 
         /// <summary>
         ///  Indicates how hungry the pet is.
@@ -50,21 +55,6 @@ namespace VirtualPaws.Domain.Entities
         ///  - Health scores are calculated based on hunger status and pet type.
         ///  - The lower the starvation, the more health points are reduced.
         /// </summary>
-        public byte HungerStatus { get; set; }
-
-        /// <summary>
-        /// Indicates whether the pet is adopted or not.
-        /// </summary>
-        public bool IsOwned { get; set; }
-
-        /// <summary>
-        /// Indicates whether the pet is alive or not.
-        /// </summary>
-        public bool IsAlive { get; set; }
-
-        /// <summary>
-        /// Indicates whether the pet is visible or not.
-        /// </summary>
-        public bool IsVisible { get; set; }             
+        public byte HungerScore { get; set; }       
     }
 }

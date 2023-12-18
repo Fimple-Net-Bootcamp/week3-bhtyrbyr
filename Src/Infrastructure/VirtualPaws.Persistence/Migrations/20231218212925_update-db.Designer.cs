@@ -12,8 +12,8 @@ using VirtualPaws.Persistence.Context;
 namespace VirtualPaws.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231215175324_pet-table-update")]
-    partial class pettableupdate
+    [Migration("20231218212925_update-db")]
+    partial class updatedb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,15 +27,15 @@ namespace VirtualPaws.Persistence.Migrations
 
             modelBuilder.Entity("ActivityPet", b =>
                 {
-                    b.Property<int>("ActivitiesCanBeId")
+                    b.Property<int>("ActivitiesId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("PawsId")
+                    b.Property<int>("PetsId")
                         .HasColumnType("integer");
 
-                    b.HasKey("ActivitiesCanBeId", "PawsId");
+                    b.HasKey("ActivitiesId", "PetsId");
 
-                    b.HasIndex("PawsId");
+                    b.HasIndex("PetsId");
 
                     b.ToTable("ActivityPet");
                 });
@@ -58,38 +58,12 @@ namespace VirtualPaws.Persistence.Migrations
                     b.Property<byte>("NutritionalValue")
                         .HasColumnType("smallint");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Activities");
-                });
-
-            modelBuilder.Entity("VirtualPaws.Domain.Entities.OwnershipRecord", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("OwnerId")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("PawStatus")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("PetId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerId");
-
-                    b.HasIndex("PetId");
-
-                    b.ToTable("OwnershipRecords");
+                    b.ToTable("Activitys");
                 });
 
             modelBuilder.Entity("VirtualPaws.Domain.Entities.Pet", b =>
@@ -103,29 +77,26 @@ namespace VirtualPaws.Persistence.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<byte>("HungerStatus")
+                    b.Property<byte>("HungerScore")
                         .HasColumnType("smallint");
 
-                    b.Property<bool>("IsAlive")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsOwned")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsVisible")
-                        .HasColumnType("boolean");
+                    b.Property<byte>("Level")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("OwnerId")
+                    b.Property<int>("OwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("OwnershipDate")
+                    b.Property<byte>("Type")
+                        .HasColumnType("smallint");
+
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<byte>("PawType")
+                    b.Property<byte>("XP")
                         .HasColumnType("smallint");
 
                     b.HasKey("Id");
@@ -153,6 +124,9 @@ namespace VirtualPaws.Persistence.Migrations
                     b.Property<byte>("NutritionalValue")
                         .HasColumnType("smallint");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.ToTable("PetFoods");
@@ -175,11 +149,43 @@ namespace VirtualPaws.Persistence.Migrations
                     b.Property<int>("PetId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("PetHealtSituations");
+                    b.ToTable("PetHealtStatuses");
+                });
+
+            modelBuilder.Entity("VirtualPaws.Domain.Entities.Training", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<byte>("MinLevel")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<byte>("XP")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Trainings");
                 });
 
             modelBuilder.Entity("VirtualPaws.Domain.Entities.User", b =>
@@ -189,9 +195,6 @@ namespace VirtualPaws.Persistence.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("BirthDay")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp with time zone");
@@ -207,10 +210,14 @@ namespace VirtualPaws.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<byte>("PetOwnershipAbility")
-                        .HasColumnType("smallint");
-
                     b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -223,41 +230,24 @@ namespace VirtualPaws.Persistence.Migrations
                 {
                     b.HasOne("VirtualPaws.Domain.Entities.Activity", null)
                         .WithMany()
-                        .HasForeignKey("ActivitiesCanBeId")
+                        .HasForeignKey("ActivitiesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("VirtualPaws.Domain.Entities.Pet", null)
                         .WithMany()
-                        .HasForeignKey("PawsId")
+                        .HasForeignKey("PetsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("VirtualPaws.Domain.Entities.OwnershipRecord", b =>
-                {
-                    b.HasOne("VirtualPaws.Domain.Entities.User", "Owner")
-                        .WithMany()
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VirtualPaws.Domain.Entities.Pet", "Pet")
-                        .WithMany()
-                        .HasForeignKey("PetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Owner");
-
-                    b.Navigation("Pet");
                 });
 
             modelBuilder.Entity("VirtualPaws.Domain.Entities.Pet", b =>
                 {
                     b.HasOne("VirtualPaws.Domain.Entities.User", "Owner")
-                        .WithMany("Paws")
-                        .HasForeignKey("OwnerId");
+                        .WithMany("Pets")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Owner");
                 });
@@ -275,7 +265,7 @@ namespace VirtualPaws.Persistence.Migrations
 
             modelBuilder.Entity("VirtualPaws.Domain.Entities.User", b =>
                 {
-                    b.Navigation("Paws");
+                    b.Navigation("Pets");
                 });
 #pragma warning restore 612, 618
         }

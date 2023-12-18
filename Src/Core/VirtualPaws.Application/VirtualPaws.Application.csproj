@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Pets\Commands\Delete\" />
-    <Folder Include="Features\Pets\Commands\Update\" />
+    <Folder Include="DTO%27s\" />
+    <Folder Include="Features\" />
     <Folder Include="Parameters\" />
     <Folder Include="Wrappers\" />
   </ItemGroup>

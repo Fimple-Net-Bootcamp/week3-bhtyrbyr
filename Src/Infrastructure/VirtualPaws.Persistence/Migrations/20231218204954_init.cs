@@ -7,24 +7,25 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace VirtualPaws.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Activities",
+                name: "Activitys",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     NutritionalValue = table.Column<byte>(type: "smallint", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Activities", x => x.Id);
+                    table.PrimaryKey("PK_Activitys", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,11 +36,29 @@ namespace VirtualPaws.Persistence.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     NutritionalValue = table.Column<byte>(type: "smallint", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PetFoods", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trainings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    MinLevel = table.Column<byte>(type: "smallint", nullable: false),
+                    XP = table.Column<byte>(type: "smallint", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trainings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,10 +70,9 @@ namespace VirtualPaws.Persistence.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Surname = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
-                    BirthDay = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    PetOwnershipAbility = table.Column<byte>(type: "smallint", nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,14 +87,12 @@ namespace VirtualPaws.Persistence.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     OwnerId = table.Column<int>(type: "integer", nullable: false),
-                    OwnershipDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    PawType = table.Column<byte>(type: "smallint", nullable: false),
-                    HungerStatus = table.Column<byte>(type: "smallint", nullable: false),
-                    BirthDay = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsAdopted = table.Column<bool>(type: "boolean", nullable: false),
-                    IsAlive = table.Column<bool>(type: "boolean", nullable: false),
-                    IsVisible = table.Column<bool>(type: "boolean", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    Type = table.Column<byte>(type: "smallint", nullable: false),
+                    Level = table.Column<byte>(type: "smallint", nullable: false),
+                    XP = table.Column<byte>(type: "smallint", nullable: false),
+                    HungerScore = table.Column<byte>(type: "smallint", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,69 +109,42 @@ namespace VirtualPaws.Persistence.Migrations
                 name: "ActivityPet",
                 columns: table => new
                 {
-                    ActivitiesCanBeId = table.Column<int>(type: "integer", nullable: false),
-                    PawsId = table.Column<int>(type: "integer", nullable: false)
+                    ActivitiesId = table.Column<int>(type: "integer", nullable: false),
+                    PetsId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ActivityPet", x => new { x.ActivitiesCanBeId, x.PawsId });
+                    table.PrimaryKey("PK_ActivityPet", x => new { x.ActivitiesId, x.PetsId });
                     table.ForeignKey(
-                        name: "FK_ActivityPet_Activities_ActivitiesCanBeId",
-                        column: x => x.ActivitiesCanBeId,
-                        principalTable: "Activities",
+                        name: "FK_ActivityPet_Activitys_ActivitiesId",
+                        column: x => x.ActivitiesId,
+                        principalTable: "Activitys",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ActivityPet_Pets_PawsId",
-                        column: x => x.PawsId,
+                        name: "FK_ActivityPet_Pets_PetsId",
+                        column: x => x.PetsId,
                         principalTable: "Pets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "OwnershipRecords",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    OwnerId = table.Column<int>(type: "integer", nullable: false),
-                    PetId = table.Column<int>(type: "integer", nullable: false),
-                    PawStatus = table.Column<bool>(type: "boolean", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OwnershipRecords", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_OwnershipRecords_Pets_PetId",
-                        column: x => x.PetId,
-                        principalTable: "Pets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OwnershipRecords_Users_OwnerId",
-                        column: x => x.OwnerId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PetHealtSituations",
+                name: "PetHealtStatuses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PetId = table.Column<int>(type: "integer", nullable: false),
                     HealtScore = table.Column<byte>(type: "smallint", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PetHealtSituations", x => x.Id);
+                    table.PrimaryKey("PK_PetHealtStatuses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PetHealtSituations_Pets_PetId",
+                        name: "FK_PetHealtStatuses_Pets_PetId",
                         column: x => x.PetId,
                         principalTable: "Pets",
                         principalColumn: "Id",
@@ -163,23 +152,13 @@ namespace VirtualPaws.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ActivityPet_PawsId",
+                name: "IX_ActivityPet_PetsId",
                 table: "ActivityPet",
-                column: "PawsId");
+                column: "PetsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OwnershipRecords_OwnerId",
-                table: "OwnershipRecords",
-                column: "OwnerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OwnershipRecords_PetId",
-                table: "OwnershipRecords",
-                column: "PetId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PetHealtSituations_PetId",
-                table: "PetHealtSituations",
+                name: "IX_PetHealtStatuses_PetId",
+                table: "PetHealtStatuses",
                 column: "PetId");
 
             migrationBuilder.CreateIndex(
@@ -195,16 +174,16 @@ namespace VirtualPaws.Persistence.Migrations
                 name: "ActivityPet");
 
             migrationBuilder.DropTable(
-                name: "OwnershipRecords");
-
-            migrationBuilder.DropTable(
                 name: "PetFoods");
 
             migrationBuilder.DropTable(
-                name: "PetHealtSituations");
+                name: "PetHealtStatuses");
 
             migrationBuilder.DropTable(
-                name: "Activities");
+                name: "Trainings");
+
+            migrationBuilder.DropTable(
+                name: "Activitys");
 
             migrationBuilder.DropTable(
                 name: "Pets");

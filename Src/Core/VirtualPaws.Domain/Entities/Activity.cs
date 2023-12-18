@@ -15,7 +15,7 @@ namespace VirtualPaws.Domain.Entities
         /// <summary>
         /// Indicates the pet that can do the activity.
         /// </summary>
-        public List<Pet> Paws { get; set; }
+        public List<Pet> Pets { get; set; }
 
         /// <summary>
         /// Indicates how much this activity will contribute to your health score.

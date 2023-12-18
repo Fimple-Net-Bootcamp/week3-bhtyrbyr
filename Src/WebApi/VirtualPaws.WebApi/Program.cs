@@ -1,13 +1,16 @@
 using VirtualPaws.Application;
 using VirtualPaws.Persistence;
+using WebAPI.Middlewares;
+using WebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddPersistenceServices();
+builder.Services.AddPersistenceServices(builder.Configuration.GetConnectionString("default"));
 builder.Services.AddApplicationService();
+builder.Services.AddSingleton<ILogService, ConsoleLogger>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -24,6 +27,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCustomExceptionMiddle();
 
 app.MapControllers();
 

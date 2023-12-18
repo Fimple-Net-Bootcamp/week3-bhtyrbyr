@@ -11,11 +11,12 @@ namespace VirtualPaws.Application
 {
     public static class ServiceRegistration
     {
-        public static void AddApplicationService(this IServiceCollection services)
+        public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
             var assm = Assembly.GetExecutingAssembly();
             services.AddAutoMapper(assm);
             services.AddMediatR(assm);
+            return services;
         }
     }
 }
