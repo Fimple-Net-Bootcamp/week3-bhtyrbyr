@@ -17,7 +17,7 @@ namespace VirtualPaws.Application.Features.Entities.Pets.Queries
 
             public async Task<List<Pet>> Handle(GetAllListQuery request, CancellationToken cancellationToken)
             {
-                var list = _repo.GetAll().Include().OrderBy(pet => pet.Id).ToList();
+                var list = _repo.GetAll();
                 return list;
             }
         }
