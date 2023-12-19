@@ -46,3 +46,10 @@
 * DTO'lar düzenlenmek üzere kaldýrýldý.
 * ServiceRegistration'lar IServicesCollection döndürecek þekilde düzenlendi.
 * Kontrolcüler düzenlenmek üzere kaldýrýlý.
+
+### C11 - Ýþlem kayýtlarý entity'leri oluþturuldu.
+* Yapýlan iþlemlerin kayýtlarýnýn DB'de tutulmasý için gerekli entity'ler oluþturuldu ve DB'ye migration ile yansýtýldý.
+* Kayýt entity'ler için Repository arayüzleri oluþturuldu.
+* Entity'ler için Repository arayüzleri oluþturuldu.
+* Infrastructure katmaný içinde Presistence içerisinde oluþturulan Repository'lerin içerisi dolduruldu.
+* Geçerli katmanýn ServiceRegistraction fonksiyonu düzenlendi.

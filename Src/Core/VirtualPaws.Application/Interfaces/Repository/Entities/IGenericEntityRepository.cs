@@ -1,8 +1,8 @@
 ﻿using VirtualPaws.Domain.Common;
 
-namespace VirtualPaws.Application.Interfaces.Repository
+namespace VirtualPaws.Application.Interfaces.Repository.Entities
 {
-    public interface IGenericRepository<T> where T: BaseEntity
+    public interface IGenericEntityRepository<T> where T : BaseEntity
     {
         List<T> GetAll();
         T GetById(int id);

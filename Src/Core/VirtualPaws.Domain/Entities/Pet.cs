@@ -12,6 +12,7 @@ namespace VirtualPaws.Domain.Entities
         /// Indicates the pet's name.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Indicates the Animal Type.
         /// </summary>

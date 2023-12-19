@@ -1,15 +1,25 @@
-﻿using VirtualPaws.Application.Interfaces.Repository;
+﻿using VirtualPaws.Application.Interfaces.Repository.Entities;
 using VirtualPaws.Domain.Common;
 using VirtualPaws.Persistence.Context;
 
 namespace VirtualPaws.Persistence.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericEntityRepository<T> : IGenericEntityRepository<T> where T : BaseEntity
     {
         private readonly AppDbContext _dbContext;
-        public GenericRepository(AppDbContext dbContext)
+        public GenericEntityRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public List<T> GetAll()
+        {
+            return _dbContext.Set<T>().ToList();
+        }
+
+        public T GetById(int id)
+        {
+            return _dbContext.Set<T>().Find(id);
         }
 
         public void Create(T entity)
@@ -25,14 +35,10 @@ namespace VirtualPaws.Persistence.Repositories
             _dbContext.SaveChanges();
         }
 
-        public List<T> GetAll()
+        public void Delete(T entity)
         {
-            return _dbContext.Set<T>().ToList();
-        }
-
-        public T GetById(int id)
-        {
-            return _dbContext.Set<T>().Find(id);
+            _dbContext.Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public void Update(T entity)
