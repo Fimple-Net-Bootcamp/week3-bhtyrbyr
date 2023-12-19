@@ -21,13 +21,13 @@ namespace VirtualPaws.Domain.Entities
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
-        public UInt16 OwnerId { get; set; }
+        public UInt16? OwnerId { get; set; }
 
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
-        [ForeignKey("OwnerId")]
-        public User Owner{ get; set; }
+        [ForeignKey("UserId")]
+        public User? Owner { get; set; }
 
         /// <summary>
         /// Indicates the level of the pet.

@@ -1,5 +1,7 @@
-﻿using VirtualPaws.Application.Interfaces.Repository.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using VirtualPaws.Application.Interfaces.Repository.Entities;
 using VirtualPaws.Domain.Common;
+using VirtualPaws.Domain.Entities;
 using VirtualPaws.Persistence.Context;
 
 namespace VirtualPaws.Persistence.Repositories.Entities
@@ -14,7 +16,7 @@ namespace VirtualPaws.Persistence.Repositories.Entities
 
         public List<T> GetAll()
         {
-            return _dbContext.Set<T>().ToList();
+            return _dbContext.Set<T>().OrderBy(pet => pet.Id).ToList();
         }
 
         public T GetById(int id)
@@ -25,13 +27,6 @@ namespace VirtualPaws.Persistence.Repositories.Entities
         public void Create(T entity)
         {
             _dbContext.Add(entity);
-            _dbContext.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            var item = GetById(id);
-            _dbContext.Remove(item);
             _dbContext.SaveChanges();
         }
 

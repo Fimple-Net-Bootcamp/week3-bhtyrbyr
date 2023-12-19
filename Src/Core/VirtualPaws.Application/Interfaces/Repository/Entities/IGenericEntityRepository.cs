@@ -1,4 +1,5 @@
 ﻿using VirtualPaws.Domain.Common;
+using VirtualPaws.Domain.Entities;
 
 namespace VirtualPaws.Application.Interfaces.Repository.Entities
 {
@@ -6,7 +7,7 @@ namespace VirtualPaws.Application.Interfaces.Repository.Entities
     {
         List<T> GetAll();
         T GetById(int id);
-        void Delete(int id);
+        void Delete(T entity);
         void Update(T entity);
         void Create(T entity);
 

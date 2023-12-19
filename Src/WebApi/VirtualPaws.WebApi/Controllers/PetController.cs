@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using VirtualPaws.Application.Features.Entities.Pets.Queries;
 
 namespace VirtualPaws.WebApi.Controllers
 {
@@ -14,5 +15,11 @@ namespace VirtualPaws.WebApi.Controllers
             _mediator = mediator;
         }
 
+        [HttpGet("")]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllListQuery();
+            return Ok(await _mediator.Send(query));
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using VirtualPaws.Application.Interfaces.Repository.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using VirtualPaws.Application.Interfaces.Repository.Entities;
 using VirtualPaws.Domain.Entities;
 using VirtualPaws.Persistence.Context;
 

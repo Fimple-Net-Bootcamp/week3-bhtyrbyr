@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VirtualPaws.Persistence.Context;
@@ -11,9 +12,11 @@ using VirtualPaws.Persistence.Context;
 namespace VirtualPaws.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231219133644_update-pet-table")]
+    partial class updatepettable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,9 +86,6 @@ namespace VirtualPaws.Persistence.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int?>("OwnerId")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -376,11 +376,11 @@ namespace VirtualPaws.Persistence.Migrations
 
             modelBuilder.Entity("VirtualPaws.Domain.Entities.Pet", b =>
                 {
-                    b.HasOne("VirtualPaws.Domain.Entities.User", "Owner")
+                    b.HasOne("VirtualPaws.Domain.Entities.User", "User")
                         .WithMany("Pets")
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Owner");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("VirtualPaws.Domain.Entities.PetHealtStatus", b =>

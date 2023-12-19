@@ -8,7 +8,8 @@
 
   <ItemGroup>
     <Folder Include="DTO%27s\" />
-    <Folder Include="Features\" />
+    <Folder Include="Features\Entities\Pets\Commands\" />
+    <Folder Include="Features\Records\" />
     <Folder Include="Parameters\" />
     <Folder Include="Wrappers\" />
   </ItemGroup>
