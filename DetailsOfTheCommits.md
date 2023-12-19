@@ -41,7 +41,6 @@
 
 ### C9 - Evcil hayvan sorgulamarý düzenlendi.
 
-
 ### C10 - Entity'lerde ve DB'de düzenlemeler yapýldý.
 * Entity'ler düzenlendi.
 * DTO'lar düzenlenmek üzere kaldýrýldý.

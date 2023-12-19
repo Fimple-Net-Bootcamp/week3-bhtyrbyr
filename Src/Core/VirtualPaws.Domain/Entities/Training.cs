@@ -10,11 +10,6 @@ namespace VirtualPaws.Domain.Entities
         public string Name { get; set; }
 
         /// <summary>
-        /// Indicates the minimum level required for the training to take place.
-        /// </summary>
-        public byte MinLevel { get; set; }
-
-        /// <summary>
         /// Indicates the contribution to the level.
         /// </summary>
         public byte XP { get; set; }

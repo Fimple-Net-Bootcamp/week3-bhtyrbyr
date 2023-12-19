@@ -12,7 +12,7 @@ using VirtualPaws.Persistence.Context;
 namespace VirtualPaws.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231218204954_init")]
+    [Migration("20231219102956_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -90,8 +90,9 @@ namespace VirtualPaws.Persistence.Migrations
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<byte>("Type")
-                        .HasColumnType("smallint");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("timestamp with time zone");
@@ -216,6 +217,10 @@ namespace VirtualPaws.Persistence.Migrations
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

@@ -12,6 +12,10 @@ namespace VirtualPaws.Domain.Entities
         /// Indicates the pet's name.
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Indicates the Animal Type.
+        /// </summary>
+        public string Type { get; set; }
 
         /// <summary>
         /// Indicates the user who adopted the pet.
@@ -23,15 +27,6 @@ namespace VirtualPaws.Domain.Entities
         /// </summary>
         [ForeignKey("OwnerId")]
         public User Owner{ get; set; }
-
-        /// <summary>
-        /// Specifies the type of the pet.
-        /// - Can take a value between 1 and 10.
-        /// - Users can adopt a pet based on this type value and their own X score.
-        /// - 1 means puppy.
-        /// - 10 means legendary.
-        /// </summary>
-        public byte Type { get; set; }
 
         /// <summary>
         /// Indicates the level of the pet.

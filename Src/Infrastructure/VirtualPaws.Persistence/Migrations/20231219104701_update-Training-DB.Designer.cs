@@ -12,8 +12,8 @@ using VirtualPaws.Persistence.Context;
 namespace VirtualPaws.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231218212925_update-db")]
-    partial class updatedb
+    [Migration("20231219104701_update-Training-DB")]
+    partial class updateTrainingDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,8 +90,9 @@ namespace VirtualPaws.Persistence.Migrations
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<byte>("Type")
-                        .HasColumnType("smallint");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("timestamp with time zone");
@@ -169,9 +170,6 @@ namespace VirtualPaws.Persistence.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<byte>("MinLevel")
-                        .HasColumnType("smallint");
 
                     b.Property<string>("Name")
                         .IsRequired()

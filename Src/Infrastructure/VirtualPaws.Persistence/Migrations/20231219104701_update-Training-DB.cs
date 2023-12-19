@@ -5,25 +5,25 @@
 namespace VirtualPaws.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class updateuser : Migration
+    public partial class updateTrainingDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Username",
-                table: "Users",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.DropColumn(
+                name: "MinLevel",
+                table: "Trainings");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Username",
-                table: "Users");
+            migrationBuilder.AddColumn<byte>(
+                name: "MinLevel",
+                table: "Trainings",
+                type: "smallint",
+                nullable: false,
+                defaultValue: (byte)0);
         }
     }
 }
