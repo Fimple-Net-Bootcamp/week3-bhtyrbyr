@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace VirtualPaws.Application.Wrappers
 {
-    public class ServiceCreateResponse : BaseResponse
+    public class ServiceResponse : BaseResponse
     {
         public string ServicesName { get; set; }
 
-        public ServiceCreateResponse(string servicesName, string Message) : base(Message)
+        public ServiceResponse(string servicesName, string Message) : base(Message)
         {
             ServicesName = servicesName;
         }

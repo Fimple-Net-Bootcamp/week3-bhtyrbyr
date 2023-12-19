@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VirtualPaws.Application.DTOs.PetDTOs;
 using VirtualPaws.Application.Features.Entities.Pets.Commands.Create;
+using VirtualPaws.Application.Features.Entities.Pets.Commands.Delete;
 using VirtualPaws.Application.Features.Entities.Pets.Queries;
 
 namespace VirtualPaws.WebApi.Controllers
@@ -32,11 +33,18 @@ namespace VirtualPaws.WebApi.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> Create(PetCreateDTO model)
+        public async Task<IActionResult> Create([FromBody] PetCreateDTO model)
         {
             var command = new CreateCommand(model);
             var result = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = command.newId }, result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(UInt16 id)
+        {
+            var command = new DeleteCommand(id);
+            return Ok(await _mediator.Send(command));
         }
     }
 }

@@ -64,3 +64,8 @@
 * Ýþlemlerin sonucu döndürmek için Reponse sýnýflarý oluþturuldu. 
 * Özel hata sýnýfý oluþturuldu.
 * Evcil hayvan oluþturma PetCreateDTO ile saðlandý ve veri haritalamasýnda AutoMapper kullanýldý.
+
+### C14 - Kayýt silme özelliði eklendi.
+* Evcil hayvan kayýtlarýnýn silinmesi için HttpDelete metodu oluþturuldu.
+* Ýstek sonucu dönen ServiceResponse sýnýfý düzenlendi.
+* Silinecek kayýt bulunamamasý durumunda fýrlatýlacak hata sýnýfý oluþturuldu.
