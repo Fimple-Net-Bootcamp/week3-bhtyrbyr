@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Entities\Pets\Commands\" />
     <Folder Include="Features\Records\" />
     <Folder Include="Parameters\" />
-    <Folder Include="Wrappers\" />
   </ItemGroup>
 
   <ItemGroup>

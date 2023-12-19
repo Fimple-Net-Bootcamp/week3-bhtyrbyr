@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationService();
 builder.Services.AddPersistenceServices(builder.Configuration.GetConnectionString("default"));
 builder.Services.AddSingleton<ILogService, ConsoleLogger>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

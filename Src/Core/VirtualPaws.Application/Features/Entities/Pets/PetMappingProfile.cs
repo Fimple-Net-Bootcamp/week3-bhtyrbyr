@@ -16,6 +16,10 @@ namespace VirtualPaws.Application.Features.Entities.Pets
                 .ForMember(
                     src => src.OwnerName, opt => opt.MapFrom(prop => prop.Owner == null ? "Sahipsiz" : $"{prop.Owner.Name} {prop.Owner.Surname.Substring(0, 2)}***")
                 ).ReverseMap();
+            CreateMap<PetCreateDTO, Pet>()
+                .ForMember(
+                    src => src.Activities, opt => opt.Ignore()
+                );
         }
     }
 }

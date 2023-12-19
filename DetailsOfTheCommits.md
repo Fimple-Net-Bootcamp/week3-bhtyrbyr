@@ -58,3 +58,8 @@
 * Evcil hayvanlar için sorgulama özelliði mediatr pattern kullanýlarak eklendi. 
 * Evcil hayvanlarý liste olarak görüntülerken PetSimplifiedViewDTO nesnesi kullanýldý.
 * Verilerin map'lenmesi için AutoMapper kullanýldý.
+
+### C13 - Evcil hayvan kaydetme özelliði eklendi.
+* Evcil hayvan kaydetmek için HttpPost metodu oluþturuldu.
+* Ýþlemlerin sonucu döndürmek için Reponse sýnýflarý oluþturuldu. 
+* Özel hata sýnýfý oluþturuldu.

@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using VirtualPaws.Application.DTOs.PetDTOs;
+using VirtualPaws.Application.Features.Entities.Pets.Commands.Create;
 using VirtualPaws.Application.Features.Entities.Pets.Queries;
 
 namespace VirtualPaws.WebApi.Controllers
@@ -27,6 +29,14 @@ namespace VirtualPaws.WebApi.Controllers
         {
             var query = new GetByIdQuery(id);
             return Ok(await _mediator.Send(query));
+        }
+
+        [HttpPost("")]
+        public async Task<IActionResult> Create(PetCreateDTO model)
+        {
+            var command = new CreateCommand(model);
+            var result = await _mediator.Send(command);
+            return CreatedAtAction(nameof(GetById), new { id = command.newId }, result);
         }
     }
 }

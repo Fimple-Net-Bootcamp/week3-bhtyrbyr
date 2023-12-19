@@ -5,6 +5,7 @@ namespace VirtualPaws.Application.Interfaces.Repository.Entities
 {
     public interface IGenericEntityRepository<T> where T : BaseEntity
     {
+        bool HasEntity(T entity);
         List<T> GetAll();
         T GetById(UInt16 id);
         void Delete(T entity);
