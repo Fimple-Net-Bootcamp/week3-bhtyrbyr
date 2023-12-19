@@ -63,3 +63,4 @@
 * Evcil hayvan kaydetmek için HttpPost metodu oluþturuldu.
 * Ýþlemlerin sonucu döndürmek için Reponse sýnýflarý oluþturuldu. 
 * Özel hata sýnýfý oluþturuldu.
+* Evcil hayvan oluþturma PetCreateDTO ile saðlandý ve veri haritalamasýnda AutoMapper kullanýldý.
