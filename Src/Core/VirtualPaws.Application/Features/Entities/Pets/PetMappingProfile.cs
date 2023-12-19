@@ -19,6 +19,21 @@ namespace VirtualPaws.Application.Features.Entities.Pets
             CreateMap<PetCreateDTO, Pet>()
                 .ForMember(
                     src => src.Activities, opt => opt.Ignore()
+                )
+                .ForMember(
+                    src => src.Level, opt => opt.MapFrom(prop => 1)
+                )
+                .ForMember(
+                    src => src.XP, opt => opt.MapFrom(prop => 1)
+                )
+                .ForMember(
+                    src => src.HungerScore, opt => opt.MapFrom(prop => 100)
+                )
+                .ForMember(
+                    src => src.CreateDate, opt => opt.MapFrom(prop => DateTime.Now.Date)
+                )
+                .ForMember(
+                    src => src.UpdateDate, opt => opt.MapFrom(prop => DateTime.Now.Date)
                 );
         }
     }

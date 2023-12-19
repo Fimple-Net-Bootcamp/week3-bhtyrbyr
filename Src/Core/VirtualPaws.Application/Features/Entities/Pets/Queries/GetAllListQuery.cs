@@ -1,41 +1,42 @@
 ﻿using AutoMapper;
 using MediatR;
 using VirtualPaws.Application.DTOs.PetDTOs;
+using VirtualPaws.Application.Exceptions;
 using VirtualPaws.Application.Interfaces.Repository.Entities;
+using VirtualPaws.Application.Wrappers;
 using VirtualPaws.Domain.Entities;
 
 namespace VirtualPaws.Application.Features.Entities.Pets.Queries
 {
-    public class GetAllListQuery : IRequest<List<PetSimplifiedViewDTO>>
+    public class GetAllListQuery : IRequest<QueryResponse<List<PetSimplifiedViewDTO>>>
     {
-        public class GetAllListQueryHandler : IRequestHandler<GetAllListQuery, List<PetSimplifiedViewDTO>>
+        public class GetAllListQueryHandler : IRequestHandler<GetAllListQuery, QueryResponse<List<PetSimplifiedViewDTO>>>
         {
             private readonly IPetEntityRepository _petRepo;
             private readonly IUserEntityRepository _userRepo;
-            private readonly IActivityEntityRepository _acrivityRepo;
             private readonly IMapper _mapper;
 
             public GetAllListQueryHandler(IPetEntityRepository petRepo, 
                                           IUserEntityRepository userRepo, 
-                                          IActivityEntityRepository acrivityRepo,
                                           IMapper mapper)
             {
                 _petRepo = petRepo;
                 _userRepo = userRepo;
-                _acrivityRepo = acrivityRepo;
                 _mapper = mapper;
             }
 
-            public async Task<List<PetSimplifiedViewDTO>> Handle(GetAllListQuery request, CancellationToken cancellationToken)
+            public async Task<QueryResponse<List<PetSimplifiedViewDTO>>> Handle(GetAllListQuery request, CancellationToken cancellationToken)
             {
-                var _pets = _petRepo.GetAll();
-                _pets.ForEach(pet =>
+                var entities = _petRepo.GetAll();
+                if (!entities.Any())
+                    throw new NoRecordFoundException();
+                entities.ForEach(entity =>
                 {
-                    if (pet.OwnerId is not null)
-                        pet.Owner = _userRepo.GetById((UInt16)pet.OwnerId);
+                    if (entity.OwnerId is not null)
+                        entity.Owner = _userRepo.GetById((UInt16)entity.OwnerId);
                 });
-                var result = _mapper.Map<List<PetSimplifiedViewDTO>>(_pets);
-                return result;
+                var result = _mapper.Map<List<PetSimplifiedViewDTO>>(entities);
+                return new QueryResponse<List<PetSimplifiedViewDTO>>("Pet Service", "The records were successfully retrieved from the database.", result);
             }
         }
     }

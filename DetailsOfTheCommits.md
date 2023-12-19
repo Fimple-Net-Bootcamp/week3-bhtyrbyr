@@ -69,3 +69,6 @@
 * Evcil hayvan kayýtlarýnýn silinmesi için HttpDelete metodu oluþturuldu.
 * Ýstek sonucu dönen ServiceResponse sýnýfý düzenlendi.
 * Silinecek kayýt bulunamamasý durumunda fýrlatýlacak hata sýnýfý oluþturuldu.
+
+### C15 - Sorgular için düzenlemeler yapýldý.
+* 

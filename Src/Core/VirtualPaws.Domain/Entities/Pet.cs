@@ -40,17 +40,17 @@ namespace VirtualPaws.Domain.Entities
         public byte XP { get; set; }
 
         /// <summary>
-        /// Identifies activities that the pet can do.
-        /// </summary>
-        public List<Activity> Activities { get; set; }
-
-        /// <summary>
         ///  Indicates how hungry the pet is.
         ///  - The weighted coefficient determining the value is the pet type.
         ///  - It takes a value between 1 and 100.
         ///  - Health scores are calculated based on hunger status and pet type.
         ///  - The lower the starvation, the more health points are reduced.
         /// </summary>
-        public byte HungerScore { get; set; }       
+        public byte HungerScore { get; set; }
+
+        /// <summary>
+        /// Identifies activities that the pet can do.
+        /// </summary>
+        public List<Activity> Activities { get; set; } 
     }
 }
