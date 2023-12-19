@@ -26,7 +26,7 @@ namespace VirtualPaws.Domain.Entities
         /// <summary>
         /// Indicates the user who adopted the pet.
         /// </summary>
-        [ForeignKey("UserId")]
+        [ForeignKey("OwnerId")]
         public User? Owner { get; set; }
 
         /// <summary>
