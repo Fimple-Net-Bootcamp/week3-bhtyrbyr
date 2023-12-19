@@ -2,7 +2,7 @@
 
 namespace VirtualPaws.Application.Interfaces.Repository.Entities
 {
-    public interface IUserRepository : IGenericEntityRepository<User>
+    public interface IUserEntityRepository : IGenericEntityRepository<User>
     {
     }
 }

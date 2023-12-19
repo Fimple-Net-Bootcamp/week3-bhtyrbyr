@@ -2,7 +2,7 @@
 using VirtualPaws.Domain.Common;
 using VirtualPaws.Persistence.Context;
 
-namespace VirtualPaws.Persistence.Repositories
+namespace VirtualPaws.Persistence.Repositories.Entities
 {
     public class GenericEntityRepository<T> : IGenericEntityRepository<T> where T : BaseEntity
     {

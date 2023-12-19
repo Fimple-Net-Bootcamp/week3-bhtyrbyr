@@ -4,7 +4,7 @@ using VirtualPaws.Persistence.Context;
 
 namespace VirtualPaws.Persistence.Repositories.Entities
 {
-    public class ActivityEntityRepository : GenericEntityRepository<Activity>, IActivityRepository
+    public class ActivityEntityRepository : GenericEntityRepository<Activity>, IActivityEntityRepository
     {
         public ActivityEntityRepository(AppDbContext dbContext) : base(dbContext)
         { }

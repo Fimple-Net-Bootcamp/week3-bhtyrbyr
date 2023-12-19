@@ -2,7 +2,7 @@
 
 namespace VirtualPaws.Application.Interfaces.Repository.Entities
 {
-    public interface IActivityRepository : IGenericEntityRepository<Activity>
+    public interface IActivityEntityRepository : IGenericEntityRepository<Activity>
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace VirtualPaws.Application.Interfaces.Repository.Entities
 {
-    public interface IPetHealtStatusRepository : IGenericEntityRepository<PetHealtStatus>
+    public interface IPetHealtStatusEntityRepository : IGenericEntityRepository<PetHealtStatus>
     {
     }
 }
