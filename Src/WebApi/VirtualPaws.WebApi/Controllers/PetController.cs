@@ -21,5 +21,12 @@ namespace VirtualPaws.WebApi.Controllers
             var query = new GetAllListQuery();
             return Ok(await _mediator.Send(query));
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(UInt16 id)
+        {
+            var query = new GetByIdQuery(id);
+            return Ok(await _mediator.Send(query));
+        }
     }
 }

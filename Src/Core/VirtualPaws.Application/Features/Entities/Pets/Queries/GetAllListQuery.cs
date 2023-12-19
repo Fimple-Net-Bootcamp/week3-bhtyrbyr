@@ -29,11 +29,10 @@ namespace VirtualPaws.Application.Features.Entities.Pets.Queries
             public async Task<List<PetSimplifiedViewDTO>> Handle(GetAllListQuery request, CancellationToken cancellationToken)
             {
                 var _pets = _petRepo.GetAll();
-                var _users = _userRepo.GetAll();
                 _pets.ForEach(pet =>
                 {
-                    if(pet.OwnerId is not null)
-                        pet.Owner = _users.FirstOrDefault(user => user.Id == pet.OwnerId);
+                    if (pet.OwnerId is not null)
+                        pet.Owner = _userRepo.GetById((UInt16)pet.OwnerId);
                 });
                 var result = _mapper.Map<List<PetSimplifiedViewDTO>>(_pets);
                 return result;

@@ -53,3 +53,7 @@
 * Entity'ler için Repository arayüzleri oluþturuldu.
 * Infrastructure katmaný içinde Presistence içerisinde oluþturulan Repository'lerin içerisi dolduruldu.
 * Geçerli katmanýn ServiceRegistraction fonksiyonu düzenlendi.
+
+### C12 - Hayvanlar için tüm hayvanlarý sorgulama özelliði DTO uygulanarak eklendi.
+* Evcil hayvanlar için sorgulama özelliði mediatr pattern kullanýlarak eklendi. 
+* Evcil hayvanlarý liste olarak görüntülerken PetSimplifiedViewDTO nesnesi kullanýldý.

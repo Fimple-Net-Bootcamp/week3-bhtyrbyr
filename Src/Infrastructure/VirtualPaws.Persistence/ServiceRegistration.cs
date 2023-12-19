@@ -12,11 +12,12 @@ namespace VirtualPaws.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, string connectionStringinAppSettings)
         {
-            services.AddDbContext<AppDbContext>(opt => 
-                                                opt.UseNpgsql(
-                                                    connectionString: connectionStringinAppSettings
-                                                    )
-                                                );
+            services.AddDbContext<AppDbContext>(opt => {
+                opt.UseNpgsql(
+                    connectionString: connectionStringinAppSettings
+                    );
+                opt.LogTo((x) => { });
+            });
             services.AddScoped<IActivityEntityRepository, ActivityEntityRepository>();
             services.AddScoped<IPetEntityRepository, PetEntityRepository>();
             services.AddScoped<IPetFoodEntityRepository, PetFoodEntityRepository>();

@@ -19,7 +19,7 @@ namespace VirtualPaws.Persistence.Repositories.Entities
             return _dbContext.Set<T>().OrderBy(pet => pet.Id).ToList();
         }
 
-        public T GetById(int id)
+        public T GetById(UInt16 id)
         {
             return _dbContext.Set<T>().Find(id);
         }
