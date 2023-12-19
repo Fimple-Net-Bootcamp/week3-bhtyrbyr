@@ -1,24 +1,42 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
+using VirtualPaws.Application.DTOs.PetDTOs;
 using VirtualPaws.Application.Interfaces.Repository.Entities;
 using VirtualPaws.Domain.Entities;
 
 namespace VirtualPaws.Application.Features.Entities.Pets.Queries
 {
-    public class GetAllListQuery : IRequest<List<Pet>>
+    public class GetAllListQuery : IRequest<List<PetSimplifiedViewDTO>>
     {
-        public class GetAllListQueryHandler : IRequestHandler<GetAllListQuery, List<Pet>>
+        public class GetAllListQueryHandler : IRequestHandler<GetAllListQuery, List<PetSimplifiedViewDTO>>
         {
-            private readonly IPetEntityRepository _repo;
+            private readonly IPetEntityRepository _petRepo;
+            private readonly IUserEntityRepository _userRepo;
+            private readonly IActivityEntityRepository _acrivityRepo;
+            private readonly IMapper _mapper;
 
-            public GetAllListQueryHandler(IPetEntityRepository repo)
+            public GetAllListQueryHandler(IPetEntityRepository petRepo, 
+                                          IUserEntityRepository userRepo, 
+                                          IActivityEntityRepository acrivityRepo,
+                                          IMapper mapper)
             {
-                _repo = repo;
+                _petRepo = petRepo;
+                _userRepo = userRepo;
+                _acrivityRepo = acrivityRepo;
+                _mapper = mapper;
             }
 
-            public async Task<List<Pet>> Handle(GetAllListQuery request, CancellationToken cancellationToken)
+            public async Task<List<PetSimplifiedViewDTO>> Handle(GetAllListQuery request, CancellationToken cancellationToken)
             {
-                var list = _repo.GetAll();
-                return list;
+                var _pets = _petRepo.GetAll();
+                var _users = _userRepo.GetAll();
+                _pets.ForEach(pet =>
+                {
+                    if(pet.OwnerId is not null)
+                        pet.Owner = _users.FirstOrDefault(user => user.Id == pet.OwnerId);
+                });
+                var result = _mapper.Map<List<PetSimplifiedViewDTO>>(_pets);
+                return result;
             }
         }
     }
