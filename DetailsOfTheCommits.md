@@ -57,3 +57,4 @@
 ### C12 - Hayvanlar için tüm hayvanlarý sorgulama özelliði DTO uygulanarak eklendi.
 * Evcil hayvanlar için sorgulama özelliði mediatr pattern kullanýlarak eklendi. 
 * Evcil hayvanlarý liste olarak görüntülerken PetSimplifiedViewDTO nesnesi kullanýldý.
+* Verilerin map'lenmesi için AutoMapper kullanýldý.
