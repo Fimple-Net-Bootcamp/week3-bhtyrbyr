@@ -71,4 +71,5 @@
 * Silinecek kayýt bulunamamasý durumunda fýrlatýlacak hata sýnýfý oluþturuldu.
 
 ### C15 - Sorgular için düzenlemeler yapýldý.
-* 
+* Tüm isteklerde geri dönüþ deðerleri tanýmlý Response sýnýflarýnda tanýmlandý.
+* Sorgu metotlarý düzenlendi.
