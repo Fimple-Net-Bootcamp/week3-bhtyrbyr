@@ -36,7 +36,7 @@ namespace WebAPI.Middlewares
                                      ConsoleColor.White, " responded ",
                                      (context.Response.StatusCode >= 200 && context.Response.StatusCode <=299) ? ConsoleColor.Green : ConsoleColor.Red, context.Response.StatusCode,
                                      ConsoleColor.White, " in ",
-                                     ConsoleColor.Blue, watch.Elapsed.Milliseconds, ConsoleColor.White, " ms ",
+                                     ConsoleColor.DarkCyan, watch.Elapsed.Milliseconds, ConsoleColor.White, " ms ",
                                      ConsoleColor.Yellow, context.Items.Count);
             }catch(System.Exception ex)
             {
@@ -60,7 +60,7 @@ namespace WebAPI.Middlewares
                     ConsoleColor.White, " Error Message ",
                     ConsoleColor.Yellow, ex.Message,
                     ConsoleColor.White, " in ",
-                    ConsoleColor.Blue, watch.Elapsed.Milliseconds, ConsoleColor.White, " ms"
+                    ConsoleColor.DarkCyan, watch.Elapsed.Milliseconds, ConsoleColor.White, " ms"
                 );
             var result = JsonSerializer.Serialize(new {error = ex.Message});
             return context.Response.WriteAsync(result);
