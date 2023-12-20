@@ -29,7 +29,7 @@ namespace VirtualPaws.Application.Features.Entities.Pets.Queries
             {
                 var entities = _petRepo.GetAll();
                 if (!entities.Any())
-                    throw new NoRecordFoundException();
+                    throw new NoRecordFoundException("PetRepository");
                 entities.ForEach(entity =>
                 {
                     if (entity.OwnerId is not null)

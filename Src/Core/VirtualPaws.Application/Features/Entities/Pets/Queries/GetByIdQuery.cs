@@ -46,7 +46,7 @@ namespace VirtualPaws.Application.Features.Entities.Pets.Queries
                     var result = _mapper.Map<PetDetailedViewDTO>(entity);
                     return new QueryResponse<PetDetailedViewDTO>("Pet Service", "The record was successfully retrieved from the database.", result);
                 }
-                throw new NoRecordFoundException();
+                throw new NoRecordFoundException("PetRepository");
             }
         }
     }

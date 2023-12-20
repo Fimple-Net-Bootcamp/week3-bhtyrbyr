@@ -6,12 +6,15 @@ namespace WebAPI.Services
     {
         public void Write(params object[] messageParams)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("[Console Logger]");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write(" | ");
             for (int i = 0; i < messageParams.Length; i += 2)
             {
-                ConsoleColor color = (ConsoleColor)messageParams[i];
                 string text = messageParams[i + 1].ToString();
 
-                Console.ForegroundColor = color;
+                Console.ForegroundColor = (ConsoleColor)messageParams[i]; 
                 Console.Write(text);
             }
 

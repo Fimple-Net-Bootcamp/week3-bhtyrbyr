@@ -73,3 +73,9 @@
 ### C15 - Sorgular için düzenlemeler yapýldý.
 * Tüm isteklerde geri dönüþ deðerleri tanýmlý Response sýnýflarýnda tanýmlandý.
 * Sorgu metotlarý düzenlendi.
+
+### C16 - Evcil hayvan kaydý güncelleme özelliði eklendi.
+* PetController'da PUT ve PATCH isteklerini karþýlayacak fonksiyonlar oluþturuldu.
+* Ýki isteðin iþlemi tek bir Command üzerinden iþleyebilecek hale getirildi.
+* PetUpdateDTO model yapýsý oluþturuldu.
+* Ýsim düzenlemeleri yapýldý ve bazý bug'lar çözümlendi.

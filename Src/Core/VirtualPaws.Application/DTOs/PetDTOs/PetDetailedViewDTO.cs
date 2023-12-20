@@ -16,5 +16,6 @@ namespace VirtualPaws.Application.DTOs.PetDTOs
         public byte XP { get; set; }
         public byte HungerScore { get; set; }
         public DateTime CreateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

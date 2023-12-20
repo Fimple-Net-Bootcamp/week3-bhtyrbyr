@@ -26,7 +26,7 @@ namespace VirtualPaws.Application.Features.Entities.Pets.Commands.Delete
             {
                 var entity = _petRepo.GetById(request.id);
                 if (entity is null)
-                    throw new NoRecordFoundException();
+                    throw new NoRecordFoundException("PetRepository");
                 _petRepo.Delete(entity);
                 return new ServiceResponse("Pet Service", "Pet registration successfully deleted.");
             }

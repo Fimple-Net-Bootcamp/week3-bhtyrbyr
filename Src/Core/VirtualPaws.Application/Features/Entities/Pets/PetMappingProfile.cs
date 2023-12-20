@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using VirtualPaws.Application.DTOs.PetDTOs;
 using VirtualPaws.Domain.Entities;
 
@@ -10,30 +11,30 @@ namespace VirtualPaws.Application.Features.Entities.Pets
         {
             CreateMap<Pet, PetSimplifiedViewDTO>()
                 .ForMember(
-                    src => src.OwnerName, opt => opt.MapFrom(prop => prop.Owner == null ? "Sahipsiz" : $"{prop.Owner.Name} {prop.Owner.Surname.Substring(0,2)}***")
+                    dest => dest.OwnerName, opt => opt.MapFrom(src => src.Owner == null ? "Sahipsiz" : $"{src.Owner.Name} {src.Owner.Surname.Substring(0,2)}***")
                 ).ReverseMap();
             CreateMap<Pet, PetDetailedViewDTO>()
                 .ForMember(
-                    src => src.OwnerName, opt => opt.MapFrom(prop => prop.Owner == null ? "Sahipsiz" : $"{prop.Owner.Name} {prop.Owner.Surname.Substring(0, 2)}***")
+                    dest => dest.OwnerName, opt => opt.MapFrom(src => src.Owner == null ? "Sahipsiz" : $"{src.Owner.Name} {src.Owner.Surname.Substring(0, 2)}***")
                 ).ReverseMap();
             CreateMap<PetCreateDTO, Pet>()
                 .ForMember(
-                    src => src.Activities, opt => opt.Ignore()
+                    dest => dest.Activities, opt => opt.Ignore()
                 )
                 .ForMember(
-                    src => src.Level, opt => opt.MapFrom(prop => 1)
+                    dest => dest.Level, opt => opt.MapFrom(src => 1)
                 )
                 .ForMember(
-                    src => src.XP, opt => opt.MapFrom(prop => 1)
+                    dest => dest.XP, opt => opt.MapFrom(src => 1)
                 )
                 .ForMember(
-                    src => src.HungerScore, opt => opt.MapFrom(prop => 100)
+                    dest => dest.HungerScore, opt => opt.MapFrom(src => 100)
                 )
                 .ForMember(
-                    src => src.CreateDate, opt => opt.MapFrom(prop => DateTime.Now.Date)
+                    dest => dest.CreateDate, opt => opt.MapFrom(src => DateTime.Now)
                 )
                 .ForMember(
-                    src => src.UpdateDate, opt => opt.MapFrom(prop => DateTime.Now.Date)
+                    dest => dest.UpdateDate, opt => opt.MapFrom(src => DateTime.Now)
                 );
         }
     }
